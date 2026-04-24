@@ -110,15 +110,25 @@ html.light .logo-img-light { display: block; }
   filter: drop-shadow(0 0 10px rgba(225,11,30,0.55));
 }
 .logo-ai {
-  font-size: 0.58em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 19px;
+  height: 19px;
+  font-family: var(--ff-body);
+  font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.06em;
-  padding: 0.18em 0.42em;
+  letter-spacing: 0;
   background: var(--red);
   color: var(--white);
-  border-radius: 5px;
+  border-radius: 4px;
   line-height: 1;
-  align-self: center;
+  /* The logo PNG has ~7.7px top padding and ~1.7px bottom padding (when rendered
+     at 28px tall). Align the AI square with the visible "n" glyph, not the
+     image bounds, by anchoring to the top with an offset that matches the n's
+     top edge. */
+  align-self: flex-start;
+  margin-top: 8px;
   box-shadow: 0 4px 14px rgba(225,11,30,0.45),
               inset 0 1px 0 rgba(255,255,255,0.25);
 }
@@ -336,7 +346,7 @@ html.light .logo-img-light { display: block; }
 .shape-faq {
   --shape-opacity: 0.5;
   width: 380px; height: 480px;
-  bottom: -140px; right: -140px;
+  bottom: -140px; left: -140px;
 }
 
 /* --- Final CTA --- */
@@ -485,9 +495,7 @@ html.light .logo-img-light { display: block; }
 .visual-overlay {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.4)),
-    radial-gradient(ellipse at 30% 20%, rgba(225,11,30,0.15), transparent 60%);
+  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.4));
   pointer-events: none;
 }
 .visual-badge {
@@ -552,7 +560,7 @@ html.light .logo-img-light { display: block; }
 .section > .container { position: relative; z-index: 3; }
 
 .section-dark { background: var(--black); }
-.section-black { background: #050608; }
+.section-black { background: var(--black); }
 .section-light {
   background: var(--cream);
   color: var(--black);
@@ -602,8 +610,7 @@ html.light .logo-img-light { display: block; }
 /* Dark section's seam-top is intentionally empty in dark theme — the previous
    light section's seam-bottom already carries the full cream→dark fade. Adding
    a cream tint here would create a visible "lighter band" right at the boundary. */
-.section-dark.section-seam-top::before,
-.final-cta.section-seam-top::before {
+.section-dark.section-seam-top::before {
   display: none;
 }
 
@@ -1125,10 +1132,31 @@ html.light .logo-img-light { display: block; }
 /* ============ FINAL CTA ============ */
 .final-cta {
   position: relative;
-  background: linear-gradient(180deg, #0a0b0e, #1a0308);
+  background: linear-gradient(180deg, #0a0b0e 0%, #0a0b0e 30%, #13050a 65%, #1a0308 100%);
   overflow: hidden;
   padding: 140px 0;
   text-align: center;
+}
+/* Top/bottom fade overlays — hide shape-final's clipped edges where the figure
+   meets the section boundary. Overlays use the section bg color so the shape
+   dissolves into the background instead of showing a sharp cut. */
+.final-cta::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 160px;
+  background: linear-gradient(180deg, #0a0b0e 0%, rgba(10,11,14,0.7) 40%, transparent 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+.final-cta::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 140px;
+  background: linear-gradient(0deg, #1a0308 0%, rgba(26,3,8,0.7) 40%, transparent 100%);
+  z-index: 2;
+  pointer-events: none;
 }
 .final-bg { position: absolute; inset: 0; z-index: 0; }
 .final-inner { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; }
