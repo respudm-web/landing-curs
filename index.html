@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Видеоурок от Levin AI — соберите рекламный AI ролик за один вечер. Без съёмочной команды, без локации, без бюджета на продакшн." />
+  <meta property="og:title" content="Рекламный AI ролик за один вечер — Levin AI" />
+  <meta property="og:description" content="Соберите рекламный ролик для бренда одежды в нейросетях за один вечер. Без съёмочной команды, без локации, без бюджета на продакшн." />
+  <title>Рекламный AI ролик за один вечер · Levin AI</title>
+
+  <!-- Mark document as JS-ready before body renders — CSS uses this to hide animation targets -->
+  <script>document.documentElement.classList.add('has-js');</script>
+
+  <!-- [LIGHT THEME BOOT] Apply saved theme before paint to avoid flash. Remove this block to roll back. -->
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('theme') === 'light') {
+          document.documentElement.classList.add('light');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <!-- [/LIGHT THEME BOOT] -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- GSAP loaded synchronously in head so it's ready before body renders -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+</head>
+<body>
+  <!-- ===== SVG DEFS (play arrow + logo arrow only) ===== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="playArrow" viewBox="0 0 24 24">
+        <path d="M5 3l16 9-16 9V3z" fill="currentColor"/>
+      </symbol>
+      <symbol id="logoArrow" viewBox="0 0 20 28">
+        <path d="M2 3 L18 14 L2 25 Z" fill="currentColor"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="#top" class="logo" aria-label="Levin AI">
+        <img class="logo-img logo-img-dark" src="assets/logo-black.png" alt="le▸in" />
+        <img class="logo-img logo-img-light" src="assets/logo.png" alt="le▸in" />
+        <span class="logo-ai">AI</span>
+      </a>
+      <nav class="nav">
+        <a href="#program">Программа</a>
+        <a href="#result">Результат</a>
+        <a href="#author">Автор</a>
+        <a href="#price">Цена</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <!-- [LIGHT THEME TOGGLE BUTTON] Remove this button to roll back. -->
+      <button class="theme-toggle" type="button" aria-label="Переключить тему">
+        <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>
+        </svg>
+        <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M12 7a5 5 0 1 0 5 5 5 5 0 0 0-5-5Zm0-5a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1Zm0 17a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1ZM4.22 5.64a1 1 0 1 1 1.42-1.42l1.41 1.42a1 1 0 1 1-1.41 1.41Zm12.73 12.73a1 1 0 1 1 1.41-1.41l1.42 1.41a1 1 0 1 1-1.42 1.42ZM2 12a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1Zm17 0a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2h-2a1 1 0 0 1-1-1ZM5.64 19.78a1 1 0 1 1-1.42-1.42l1.42-1.41a1 1 0 1 1 1.41 1.41Zm12.73-12.73a1 1 0 1 1-1.41-1.41l1.41-1.42a1 1 0 1 1 1.42 1.42Z"/>
+        </svg>
+      </button>
+      <!-- [/LIGHT THEME TOGGLE BUTTON] -->
+      <a href="#buy" class="btn btn-ghost btn-sm">Купить урок</a>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="grid-lines"></div>
+      <div class="red-glow" data-parallax="0.15"></div>
+      <img class="shape-3d shape-hero-1" src="assets/shapes/shape-1.png" alt="" data-parallax="-0.12" data-float="1" />
+      <img class="shape-3d shape-hero-2" src="assets/shapes/shape-3.png" alt="" data-parallax="0.08" data-float="2" />
+    </div>
+
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <span class="tag"><span class="tag-dot"></span>Видеоурок · 2 350 ₽</span>
+        <h1 class="hero-title">
+          Рекламный <span class="title-accent">AI</span> ролик <br/>
+          за один вечер
+        </h1>
+        <p class="hero-sub">
+          Создай рекламный ролик для бренда одежды —
+          без съёмочной команды, без локации и без бюджета на продакшн.
+        </p>
+        <div class="hero-cta">
+          <a href="#buy" class="btn btn-primary">
+            <span>Купить за 2 350 ₽</span>
+            <svg class="btn-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#playArrow"/></svg>
+          </a>
+          <a href="#program" class="btn btn-ghost">Смотреть программу</a>
+        </div>
+        <ul class="hero-meta">
+          <li><strong>4</strong> модуля</li>
+          <li><strong>ИИ-инструменты</strong> Freepik · Kling 3.0</li>
+          <li><strong>Формат</strong> 9:16</li>
+        </ul>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true" data-parallax="-0.06">
+        <div class="visual-frame">
+          <video class="hero-video" autoplay muted loop playsinline poster="assets/shot-2.png">
+            <source src="assets/hero.mp4" type="video/mp4" />
+          </video>
+          <div class="visual-overlay"></div>
+          <div class="visual-badge">9:16 · AI-generated</div>
+        </div>
+        <div class="visual-shot visual-shot-1" style="background-image:url('assets/shot-1.png')"></div>
+        <div class="visual-shot visual-shot-2" style="background-image:url('assets/shot-3.png')"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PAIN ===== -->
+  <section class="section section-dark" id="pain">
+    <img class="shape-3d shape-pain" src="assets/shapes/shape-2.png" alt="" aria-hidden="true" data-parallax="-0.08" data-float="3" />
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Знакомо?</span>
+        <h2 class="section-title">Хочется делать крутой контент — <br/>но <span class="title-accent">не получается</span></h2>
+      </div>
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-num">01</div>
+          <h3>Ролики выглядят дёшево</h3>
+          <p>Нейросети выдают «пластиковых» персонажей и дергают анимацию — видео не похоже на рекламу бренда.</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-num">02</div>
+          <h3>Персонаж плывёт от кадра к кадру</h3>
+          <p>Лицо, одежда, фигура меняются в каждой сцене. Склеить историю невозможно.</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-num">03</div>
+          <h3>Нет продакшн-логики</h3>
+          <p>Вы умеете генерить картинки, но не понимаете, как из них собрать ритмичный ролик с кадровой драматургией.</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-num">04</div>
+          <h3>Бюджет на продакшн — в ноль</h3>
+          <p>Фешн-бренды просят «как на съёмке», но без камер, команды и моделей. А вы не знаете, как это закрыть.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESULT ===== -->
+  <section class="section section-light section-seam-top section-seam-bottom" id="result">
+    <img class="shape-3d shape-result" src="assets/shapes/shape-5.png" alt="" aria-hidden="true" data-parallax="-0.1" data-float="2" />
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dark">Что получите</span>
+        <h2 class="section-title section-title-dark">Рекламный ролик, который не отличить <br/>от <span class="title-accent">реальной съёмки</span></h2>
+      </div>
+
+      <div class="result-grid">
+        <article class="result-card">
+          <div class="result-img" style="background-image:url('assets/shot-2.png')"></div>
+          <div class="result-body">
+            <h3>Кинематографичный кадр</h3>
+            <p>Композиция, свет и оптика уровня референсов Sony / Balenciaga / Nike.</p>
+          </div>
+        </article>
+        <article class="result-card">
+          <div class="result-img" style="background-image:url('assets/shot-1.png')"></div>
+          <div class="result-body">
+            <h3>Единый персонаж</h3>
+            <p>ИИ-модель с сохранением лица, фигуры, одежды и аксессуаров во всех сценах.</p>
+          </div>
+        </article>
+        <article class="result-card">
+          <div class="result-img" style="background-image:url('assets/shot-3.png')"></div>
+          <div class="result-body">
+            <h3>Монтажная драматургия</h3>
+            <p>Сцены собираются в ритм-монтаж с кинематографическим темпом и переходами.</p>
+          </div>
+        </article>
+        <article class="result-card">
+          <div class="result-img" style="background-image:url('assets/shot-4.png')"></div>
+          <div class="result-body">
+            <h3>Готовый mp4 9:16</h3>
+            <p>Формат под Reels / Shorts / TikTok — с цветокоррекцией, grain и bloom.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROGRAM ===== -->
+  <section class="section section-dark section-seam-top" id="program">
+    <img class="shape-3d shape-program" src="assets/shapes/shape-3.png" alt="" aria-hidden="true" data-parallax="-0.1" data-float="1" />
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Программа</span>
+        <h2 class="section-title">4 модуля. <span class="title-accent">От идеи до финального mp4</span></h2>
+        <p class="section-lead">Каждый модуль — готовый пайплайн с инструментами, промптами и примерами из реального рекламного продакшна.</p>
+      </div>
+
+      <div class="modules">
+        <article class="module">
+          <div class="module-head">
+            <span class="module-num">01</span>
+            <h3>Визуальная основа и персонаж</h3>
+          </div>
+          <ul class="module-list">
+            <li>Freepik как агрегатор нейросетей</li>
+            <li>Поиск референсов в Pinterest</li>
+            <li>Генерация уникальной ИИ-модели с нуля</li>
+            <li>Консистентность: одежда, лицо, аксессуары</li>
+          </ul>
+        </article>
+
+        <article class="module">
+          <div class="module-head">
+            <span class="module-num">02</span>
+            <h3>Локации и раскадровка</h3>
+          </div>
+          <ul class="module-list">
+            <li>Генерация стильных фонов</li>
+            <li>Ракурсы и вариации сцен</li>
+            <li>Мудборд в Miro — логика видеоряда</li>
+            <li>Выбор ключевых кадров</li>
+          </ul>
+        </article>
+
+        <article class="module">
+          <div class="module-head">
+            <span class="module-num">03</span>
+            <h3>Анимация</h3>
+          </div>
+          <ul class="module-list">
+            <li>Работа с нодами во Freepik</li>
+            <li>Генерация видео в Kling 3.0 (9:16)</li>
+            <li>Промпты для движения камеры и мимики</li>
+            <li>Плавные переходы между сценами</li>
+          </ul>
+        </article>
+
+        <article class="module">
+          <div class="module-head">
+            <span class="module-num">04</span>
+            <h3>Монтаж и пост-продакшн</h3>
+          </div>
+          <ul class="module-list">
+            <li>Сборка в DaVinci Resolve / CapCut</li>
+            <li>Flip, подрезка, ритм монтажа</li>
+            <li>Лицензионная музыка из Freepik</li>
+            <li>Цветокоррекция, grain, bloom (Dehancer)</li>
+            <li>Брендинг: логотип и финальный кадр</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREENSHOTS STRIP ===== -->
+  <section class="section section-black strip">
+    <div class="container">
+      <div class="section-head section-head-tight">
+        <span class="eyebrow">Внутри урока</span>
+        <h2 class="section-title">Реальные экраны урока, а не слайды</h2>
+      </div>
+      <div class="strip-grid">
+        <div class="strip-item"><img src="assets/author-lesson.jpg" alt="Автор ведёт урок" /><span>Разбор шаг за шагом</span></div>
+        <div class="strip-item"><img src="assets/screen-model.jpg" alt="Генерация модели" /><span>Генерация ИИ-модели</span></div>
+        <div class="strip-item"><img src="assets/screen-generation.jpg" alt="Генерация кадра" /><span>Сборка сцены</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AUTHOR ===== -->
+  <section class="section section-light section-seam-top section-seam-bottom" id="author">
+    <img class="shape-3d shape-author" src="assets/shapes/shape-4.png" alt="" aria-hidden="true" data-parallax="-0.08" data-float="3" />
+    <div class="container author-grid">
+      <div class="author-photo-wrap">
+        <img src="assets/author.jpg" alt="Алексей Левин" class="author-photo" />
+        <div class="author-badge">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#playArrow"/></svg>
+          <div>
+            <strong>levin</strong>
+            <span>video production</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="author-content">
+        <span class="eyebrow eyebrow-dark">Автор</span>
+        <h2 class="section-title section-title-dark">Алексей Левин</h2>
+        <p class="author-role">Видеопродюсер · Levin Video Production</p>
+        <div class="author-bio">
+          <p>Более <strong>7 лет</strong> делаем контент и рекламные ролики для крупных федеральных брендов. Большой опыт работы с фешн-компаниями — одежда, лукбуки, рекламные кампании.</p>
+          <p>Сейчас бренды массово внедряют ИИ-контент, спрос огромный — но специалистов, которые работают с нейросетями по логике реального продакшна, почти нет. В этом уроке я передаю именно такой подход.</p>
+        </div>
+        <ul class="author-stats">
+          <li><strong>7+</strong><span>лет в продакшне</span></li>
+          <li><strong>100+</strong><span>реализованных проектов</span></li>
+          <li><strong>Fashion</strong><span>ключевая ниша</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="section section-dark section-seam-top" id="testimonials">
+    <img class="shape-3d shape-testimonials" src="assets/shapes/shape-2.png" alt="" aria-hidden="true" data-parallax="-0.08" data-float="1" />
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Отзывы</span>
+        <h2 class="section-title">Что говорят <span class="title-accent">ученики</span></h2>
+      </div>
+      <div class="testimonials-grid">
+        <article class="testimonial">
+          <div class="tm-stars">★★★★★</div>
+          <p class="tm-text">«Закрыл первый заказ на ролик для локального бренда одежды за 35 000 ₽ через неделю после урока. Подход Алексея — это не "поиграться с нейросетями", а реальный продакшн-пайплайн.»</p>
+          <div class="tm-person">
+            <div class="tm-avatar tm-avatar-1"></div>
+            <div>
+              <strong>Кирилл М.</strong>
+              <span>Видеограф, Санкт-Петербург</span>
+            </div>
+          </div>
+        </article>
+        <article class="testimonial">
+          <div class="tm-stars">★★★★★</div>
+          <p class="tm-text">«Пыталась делать ИИ-ролики полгода — персонаж плыл, сцены не склеивались. За 4 модуля разобралась с консистентностью модели и монтажом. Сейчас делаю контент для своего бренда сама.»</p>
+          <div class="tm-person">
+            <div class="tm-avatar tm-avatar-2"></div>
+            <div>
+              <strong>Мария К.</strong>
+              <span>Основательница fashion-бренда</span>
+            </div>
+          </div>
+        </article>
+        <article class="testimonial">
+          <div class="tm-stars">★★★★★</div>
+          <p class="tm-text">«Работал оператором 5 лет, думал ИИ — это хайп. После урока пересобрал услуги студии: теперь продаём клиентам ИИ-ролики как отдельный пакет. Средний чек вырос на 40%.»</p>
+          <div class="tm-person">
+            <div class="tm-avatar tm-avatar-3"></div>
+            <div>
+              <strong>Дмитрий В.</strong>
+              <span>Студия видеопродакшна, Москва</span>
+            </div>
+          </div>
+        </article>
+        <article class="testimonial">
+          <div class="tm-stars">★★★★★</div>
+          <p class="tm-text">«Самое ценное — раздел про Kling 3.0 и движение камеры. До этого мои видео выглядели как слайд-шоу. Сейчас ролик не отличить от реальной съёмки — клиенты в шоке.»</p>
+          <div class="tm-person">
+            <div class="tm-avatar tm-avatar-4"></div>
+            <div>
+              <strong>Анна С.</strong>
+              <span>Контент-мейкер, Казань</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRICE ===== -->
+  <section class="section section-price" id="price">
+    <div class="price-bg" aria-hidden="true">
+      <img class="shape-3d shape-price" src="assets/shapes/shape-1.png" alt="" data-parallax="-0.1" data-float="2" />
+      <div class="grid-lines grid-lines-red"></div>
+    </div>
+    <div class="container">
+      <div class="price-card">
+        <div class="price-left">
+          <span class="eyebrow">Видеоурок</span>
+          <h2 class="price-title">Рекламный ролик с ИИ</h2>
+          <p class="price-desc">Полный пайплайн — 4 модуля, готовые промпты, примеры из реального продакшна. Доступ навсегда.</p>
+
+          <ul class="price-features">
+            <li><svg viewBox="0 0 24 24"><use href="#playArrow"/></svg> 4 модуля, пошаговые разборы</li>
+            <li><svg viewBox="0 0 24 24"><use href="#playArrow"/></svg> Авторские промпты для Freepik / Kling 3.0</li>
+            <li><svg viewBox="0 0 24 24"><use href="#playArrow"/></svg> Шаблоны монтажа DaVinci / CapCut</li>
+            <li class="bonus"><svg viewBox="0 0 24 24"><use href="#playArrow"/></svg> <strong>Бонус:</strong> инструкция по виртуальной карте для оплаты ИИ-сервисов</li>
+          </ul>
+        </div>
+
+        <div class="price-right">
+          <div class="price-amount">
+            <span class="price-old">4 700 ₽</span>
+            <span class="price-new">2 350 ₽</span>
+            <span class="price-note">— скидка 50% на запуск</span>
+          </div>
+          <a href="#buy" class="btn btn-primary btn-xl">
+            <span>Купить урок</span>
+            <svg class="btn-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#playArrow"/></svg>
+          </a>
+          <p class="price-pay">Оплата через Prodamus · Apple Pay · СБП · карта</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section section-light section-seam-top section-seam-bottom" id="faq">
+    <img class="shape-3d shape-faq" src="assets/shapes/shape-5.png" alt="" aria-hidden="true" data-parallax="-0.08" data-float="3" />
+    <div class="container faq-wrap">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dark">FAQ</span>
+        <h2 class="section-title section-title-dark">Частые вопросы</h2>
+      </div>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>В каком формате урок?<span class="faq-icon"></span></summary>
+          <div class="faq-body">Видеозапись с разбором и скринкастом + текстовые материалы с промптами. Доступ открывается сразу после оплаты, навсегда.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Нужен ли опыт в нейросетях?<span class="faq-icon"></span></summary>
+          <div class="faq-body">Нет. Урок рассчитан на тех, кто хочет собирать рекламные ролики через ИИ. Все инструменты объясняются с нуля — от поиска референсов до финального монтажа.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Какой софт нужен?<span class="faq-icon"></span></summary>
+          <div class="faq-body">Freepik (веб), Kling 3.0 (веб), DaVinci Resolve или CapCut (бесплатные версии подойдут), Miro (бесплатный план), Pinterest.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Нужна ли подписка на ИИ-сервисы?<span class="faq-icon"></span></summary>
+          <div class="faq-body">Для полного прохождения — да, подписка Freepik с AI-кредитами. В бонусе к уроку — инструкция по оформлению виртуальной карты для оплаты иностранных сервисов.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Сколько времени займёт прохождение?<span class="faq-icon"></span></summary>
+          <div class="faq-body">Весь пайплайн — один вечер на первый ролик. Потом каждый следующий ролик собирается за 2–4 часа.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Можно ли вернуть деньги?<span class="faq-icon"></span></summary>
+          <div class="faq-body">Да. Если урок не подошёл — в течение 7 дней возвращаем деньги без вопросов.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FINAL CTA ===== -->
+  <section class="section final-cta section-seam-top">
+    <div class="final-bg" aria-hidden="true">
+      <img class="shape-3d shape-final" src="assets/shapes/shape-2.png" alt="" data-parallax="-0.12" data-float="1" />
+    </div>
+    <div class="container final-inner">
+      <h2 class="final-title">Соберите первый ИИ-ролик <br/><span class="title-accent">сегодня вечером</span></h2>
+      <p class="final-sub">2 350 ₽ · доступ навсегда · бонус-инструкция · возврат 7 дней</p>
+      <a href="#buy" class="btn btn-primary btn-xl">
+        <span>Купить урок</span>
+        <svg class="btn-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#playArrow"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#top" class="logo logo-sm">
+          <span class="logo-text">le</span>
+          <svg class="logo-arrow" viewBox="0 0 24 24"><use href="#playArrow"/></svg>
+          <span class="logo-text">in</span>
+        </a>
+        <p>Levin Video Production<br/>© 2026. Все права защищены.</p>
+      </div>
+      <div class="footer-contacts">
+        <span class="footer-label">Связаться</span>
+        <div class="footer-buttons">
+          <a href="#" class="btn-contact" aria-label="Telegram">Telegram</a>
+          <a href="#" class="btn-contact" aria-label="Instagram">Instagram</a>
+          <a href="#" class="btn-contact" aria-label="Email">Email</a>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <a href="#">Политика конфиденциальности</a>
+        <a href="#">Оферта</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
