@@ -219,7 +219,7 @@ html.light .logo-img-light { display: block; }
 .hero {
   position: relative;
   padding: 140px 0 20px;
-  min-height: 100vh;
+  min-height: min(100vh, 820px);
   overflow: hidden;
   background: radial-gradient(1200px 600px at 70% -10%, rgba(225,11,30,0.22), transparent 60%),
               radial-gradient(800px 400px at 20% 100%, rgba(107,10,20,0.3), transparent 60%),
