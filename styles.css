@@ -218,7 +218,7 @@ html.light .logo-img-light { display: block; }
 /* ============ HERO ============ */
 .hero {
   position: relative;
-  padding: 140px 0 80px;
+  padding: 140px 0 20px;
   min-height: 100vh;
   overflow: hidden;
   background: radial-gradient(1200px 600px at 70% -10%, rgba(225,11,30,0.22), transparent 60%),
@@ -229,7 +229,7 @@ html.light .logo-img-light { display: block; }
   content: "";
   position: absolute;
   left: 0; right: 0; bottom: 0;
-  height: 200px;
+  height: 120px;
   background: linear-gradient(180deg, transparent 0%, var(--black) 100%);
   pointer-events: none;
   z-index: 2;
@@ -417,6 +417,14 @@ html.light .logo-img-light { display: block; }
   position: relative;
   display: inline-block;
 }
+.title-sep {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.25);
+  font-weight: 300;
+  margin: 0 0.15em;
+  transform: translateY(-0.04em);
+}
+html.light .title-sep { color: rgba(10, 11, 14, 0.2); }
 .title-accent::after {
   content: "";
   position: absolute;
@@ -469,6 +477,7 @@ html.light .logo-img-light { display: block; }
   max-width: 560px;
   justify-self: end;
   width: 100%;
+  z-index: 3;
 }
 
 .visual-frame {
@@ -495,7 +504,7 @@ html.light .logo-img-light { display: block; }
 .visual-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.4));
+  background: linear-gradient(180deg, transparent 92%, rgba(0,0,0,0.25));
   pointer-events: none;
 }
 .visual-badge {
@@ -510,6 +519,7 @@ html.light .logo-img-light { display: block; }
   letter-spacing: 0.08em;
   text-transform: uppercase;
   border: 1px solid rgba(255,255,255,0.15);
+  color: var(--white);
 }
 
 .visual-shot {
@@ -554,9 +564,11 @@ html.light .logo-img-light { display: block; }
 /* ============ SECTIONS ============ */
 .section {
   position: relative;
-  padding: 120px 0;
+  padding: 80px 0;
   overflow: hidden;
 }
+/* Tighten the first section right after hero — hero already has bottom padding + fade */
+#pain { padding-top: 40px; }
 .section > .container { position: relative; z-index: 3; }
 
 .section-dark { background: var(--black); }
@@ -616,10 +628,10 @@ html.light .logo-img-light { display: block; }
 
 .section-head {
   max-width: 760px;
-  margin: 0 auto 64px;
+  margin: 0 auto 48px;
   text-align: center;
 }
-.section-head-tight { margin-bottom: 40px; }
+.section-head-tight { margin-bottom: 32px; }
 
 .eyebrow {
   display: inline-block;
@@ -647,6 +659,9 @@ html.light .logo-img-light { display: block; }
   line-height: 1.05;
 }
 .section-title-dark { color: var(--black); }
+
+/* In dark theme, force the result section title to white (visible on cream bg) */
+:root:not(.light) #result .section-title { color: var(--white); }
 
 .section-lead {
   margin-top: 20px;
@@ -704,13 +719,52 @@ html.light .logo-img-light { display: block; }
   font-size: 16px;
 }
 
+/* Sub-section divider inside PAIN block */
+.pain-divider {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 56px 0 28px;
+  font-family: var(--ff-display);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+.pain-divider::before {
+  content: "";
+  width: 36px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.35);
+}
+.pain-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.12), transparent);
+}
+.pain-divider--opp { color: var(--red); }
+.pain-divider--opp::before { background: var(--red); }
+.pain-divider--opp::after { background: linear-gradient(90deg, rgba(225, 11, 30, 0.5), transparent); }
+
+/* Opportunity card variant — always-on red top border */
+.pain-card--opp::before { opacity: 1; }
+.pain-card--opp {
+  background: linear-gradient(180deg, rgba(225, 11, 30, 0.08), var(--black-2));
+  border-color: rgba(225, 11, 30, 0.18);
+}
+.pain-card--opp:hover {
+  border-color: rgba(225, 11, 30, 0.45);
+}
+
 /* ============ RESULT ============ */
 .section-light .eyebrow { background: rgba(225,11,30,0.06); }
 
 .result-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 .result-card {
   display: flex;
@@ -727,20 +781,30 @@ html.light .logo-img-light { display: block; }
   box-shadow: 0 20px 50px rgba(225,11,30,0.15);
 }
 .result-img {
-  aspect-ratio: 16/9;
+  aspect-ratio: 9/16;
   background-size: cover;
   background-position: center;
   background-color: #222;
 }
-.result-body { padding: 28px 28px 32px; }
+.result-body { padding: 22px 22px 26px; }
 .result-body h3 {
   font-family: var(--ff-display);
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   letter-spacing: -0.01em;
+  line-height: 1.2;
 }
-.result-body p { color: var(--gray-500); }
+.result-body p { color: var(--gray-500); font-size: 14px; line-height: 1.45; }
+
+/* Result grid responsive: 4 → 2 columns on tablet, 1 column on mobile */
+@media (max-width: 980px) {
+  .result-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .result-grid { grid-template-columns: 1fr; }
+  .result-img { aspect-ratio: 9/14; }
+}
 
 /* ============ PROGRAM ============ */
 .modules {
@@ -838,6 +902,7 @@ html.light .logo-img-light { display: block; }
   font-weight: 500;
   letter-spacing: 0.04em;
   border: 1px solid rgba(255,255,255,0.1);
+  color: var(--white);
 }
 
 /* ============ AUTHOR ============ */
@@ -1134,7 +1199,7 @@ html.light .logo-img-light { display: block; }
   position: relative;
   background: linear-gradient(180deg, #0a0b0e 0%, #0a0b0e 30%, #13050a 65%, #1a0308 100%);
   overflow: hidden;
-  padding: 140px 0;
+  padding: 100px 0;
   text-align: center;
 }
 /* Top/bottom fade overlays — hide shape-final's clipped edges where the figure
@@ -1445,6 +1510,10 @@ html.light .strip-caption {
 /* --- Author section --- */
 html.light .author-stats strong { color: var(--black); }
 html.light .author-stats span { color: rgba(10,11,14,0.65); }
+
+/* In dark theme, force author-stats text to white (readable over silver shape on cream bg) */
+:root:not(.light) .author-stats strong { color: var(--white); }
+:root:not(.light) .author-stats span { color: rgba(255,255,255,0.7); }
 
 /* --- Price card --- */
 html.light .price-card {
