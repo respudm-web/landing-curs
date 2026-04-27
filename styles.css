@@ -985,37 +985,37 @@ html.light .title-sep { color: rgba(10, 11, 14, 0.2); }
 /* ============ TESTIMONIALS ============ */
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
 }
 .testimonial {
-  padding: 32px;
+  padding: 26px 24px;
   border-radius: var(--radius);
   background: linear-gradient(180deg, var(--surface), var(--black-2));
   border: 1px solid rgba(255,255,255,0.06);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 .tm-stars {
   color: var(--red);
-  font-size: 18px;
+  font-size: 15px;
   letter-spacing: 2px;
 }
 .tm-text {
-  font-size: 17px;
+  font-size: 15px;
   color: rgba(255,255,255,0.85);
   line-height: 1.55;
 }
 .tm-person {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   padding-top: 8px;
   border-top: 1px solid rgba(255,255,255,0.06);
 }
 .tm-avatar {
-  width: 48px; height: 48px;
+  width: 40px; height: 40px;
   border-radius: 50%;
   flex-shrink: 0;
 }
