@@ -248,6 +248,47 @@ faqItems.forEach((item) => {
 });
 
 // ============================================================
+//  Discount countdown — 24h personal timer, persists in localStorage
+// ============================================================
+(() => {
+  const el = document.querySelector('[data-timer]');
+  if (!el) return;
+
+  const hEl = el.querySelector('[data-timer-h]');
+  const mEl = el.querySelector('[data-timer-m]');
+  const sEl = el.querySelector('[data-timer-s]');
+  const KEY = 'discountDeadline';
+  const DURATION = 24 * 60 * 60 * 1000;
+
+  let deadline = parseInt(localStorage.getItem(KEY), 10);
+  const now = Date.now();
+  if (!deadline || isNaN(deadline) || deadline - now > DURATION) {
+    deadline = now + DURATION;
+    localStorage.setItem(KEY, String(deadline));
+  }
+
+  const pad = (n) => String(n).padStart(2, '0');
+
+  const tick = () => {
+    let diff = deadline - Date.now();
+    if (diff <= 0) {
+      deadline = Date.now() + DURATION;
+      localStorage.setItem(KEY, String(deadline));
+      diff = DURATION;
+    }
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    hEl.textContent = pad(h);
+    mEl.textContent = pad(m);
+    sEl.textContent = pad(s);
+  };
+
+  tick();
+  setInterval(tick, 1000);
+})();
+
+// ============================================================
 //  Hero video — graceful fallback if source is missing
 // ============================================================
 const heroVideo = document.querySelector('.hero-video');
