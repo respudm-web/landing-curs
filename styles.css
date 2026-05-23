@@ -1723,4 +1723,16 @@ html.light .hero-meta li { color: rgba(10,11,14,0.55); }
 html.light .hero-meta strong { color: var(--black); }
 
 /* Reveal-hidden (animation targets) still apply — no change needed. */
+
+/* ===== FOR WHOM NOTE ===== */
+.for-whom-note {
+  margin-top: 40px;
+  padding: 20px 28px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.7);
+  font-size: 16px;
+  line-height: 1.6;
+}
 /* [/LIGHT THEME] ============================================ */
