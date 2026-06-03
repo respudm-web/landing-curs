@@ -118,6 +118,23 @@
     .video-grid.cols-2 {
       grid-template-columns: repeat(2, 1fr);
     }
+    .real-top-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .real-column-title {
+      font-family: var(--ff-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: rgba(10,11,14,0.85);
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    @media (max-width: 700px) {
+      .real-top-grid { grid-template-columns: 1fr; }
+    }
     .video-card {
       border-radius: var(--radius);
       overflow: hidden;
@@ -267,42 +284,42 @@
           <p class="section-lead" style="color: rgba(10,11,14,0.6)">Рекламные съёмки для федеральных брендов. Полный цикл — от идеи и раскадровки до финального монтажа.</p>
         </div>
       </div>
+      <!-- Верхний ряд: Теле2 + Бекстейдж -->
+      <div class="real-top-grid">
+        <div>
+          <h3 class="real-column-title">Реклама Теле 2</h3>
+          <div class="video-card">
+            <video controls playsinline preload="metadata">
+              <source src="assets/portfolio/real/real-4.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+        <div>
+          <h3 class="real-column-title">Бекстейдж</h3>
+          <div class="video-card">
+            <video controls playsinline preload="metadata">
+              <source src="assets/portfolio/real/real-5.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <!-- Нижний ряд: 3 видео -->
       <div class="video-grid">
-        <div class="video-card landscape">
-          <video controls playsinline preload="metadata" poster="assets/portfolio/real/real-poster-1.jpg">
-            <source src="assets/portfolio/real/real-1.mp4" type="video/mp4" />
-          </video>
-          <div class="video-card-label">Теле2 · Рекламный ролик</div>
-        </div>
-        <div class="video-card landscape">
-          <video controls playsinline preload="metadata" poster="assets/portfolio/real/real-poster-2.jpg">
-            <source src="assets/portfolio/real/real-2.mp4" type="video/mp4" />
-          </video>
-          <div class="video-card-label">Съёмка · Рекламная кампания</div>
-        </div>
-        <div class="video-card landscape">
-          <video controls playsinline preload="metadata" poster="assets/portfolio/real/real-poster-3.jpg">
+        <div class="video-card">
+          <video controls playsinline preload="metadata">
             <source src="assets/portfolio/real/real-3.mp4" type="video/mp4" />
           </video>
-          <div class="video-card-label">Backstage · За кадром</div>
         </div>
-        <div class="video-card landscape">
-          <video controls playsinline preload="metadata">
-            <source src="assets/portfolio/real/real-4.mp4" type="video/mp4" />
-          </video>
-          <div class="video-card-label">Backstage · За кадром</div>
-        </div>
-        <div class="video-card landscape">
-          <video controls playsinline preload="metadata">
-            <source src="assets/portfolio/real/real-5.mp4" type="video/mp4" />
-          </video>
-          <div class="video-card-label">Backstage · За кадром</div>
-        </div>
-        <div class="video-card landscape">
+        <div class="video-card">
           <video controls playsinline preload="metadata">
             <source src="assets/portfolio/real/real-6.mp4" type="video/mp4" />
           </video>
-          <div class="video-card-label">Backstage · За кадром</div>
+        </div>
+        <div class="video-card">
+          <video controls playsinline preload="metadata">
+            <source src="assets/portfolio/real/real-2.mp4" type="video/mp4" />
+          </video>
         </div>
       </div>
     </div>
