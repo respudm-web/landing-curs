@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Братья — Концепция сериала · 2026</title>
+
+  <script>document.documentElement.classList.add('has-js');</script>
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('theme') === 'light') {
+          document.documentElement.classList.add('light');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ===== KONCEPT PAGE ===== */
+
+    .koncept-hero {
+      padding: 120px 0 80px;
+      text-align: center;
+    }
+    .koncept-eyebrow {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 20px;
+    }
+    .koncept-title {
+      font-family: var(--ff-display);
+      font-size: clamp(56px, 8vw, 100px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .koncept-subtitle {
+      font-family: var(--ff-display);
+      font-size: clamp(18px, 2.5vw, 26px);
+      font-weight: 600;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 12px;
+    }
+    .koncept-meta {
+      font-size: 14px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ===== SECTIONS ===== */
+    .koncept-section {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 64px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .koncept-section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 16px;
+    }
+    .koncept-section h2 {
+      font-family: var(--ff-display);
+      font-size: clamp(24px, 3vw, 34px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .koncept-section p {
+      font-size: 17px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 16px;
+    }
+    .koncept-section p:last-child { margin-bottom: 0; }
+
+    /* ===== QUOTE ===== */
+    .koncept-quote {
+      border-left: 3px solid var(--red);
+      padding: 16px 24px;
+      margin: 32px 0;
+      background: rgba(225,11,30,0.05);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .koncept-quote p {
+      font-family: var(--ff-display);
+      font-size: 20px;
+      font-style: italic;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9) !important;
+      margin: 0 !important;
+      line-height: 1.5;
+    }
+
+    /* ===== HEROES GRID ===== */
+    .heroes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .hero-card {
+      padding: 28px 24px;
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, var(--surface), var(--black-2));
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .hero-card-name {
+      font-family: var(--ff-display);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .hero-card p {
+      font-size: 15px !important;
+      line-height: 1.65 !important;
+      margin: 0 !important;
+    }
+
+    /* ===== EPISODE TAG ===== */
+    .episode-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.02em;
+      margin-bottom: 20px;
+    }
+    .episode-tag span {
+      color: var(--red);
+    }
+
+    /* ===== CHOICES LIST ===== */
+    .choices-list {
+      list-style: none;
+      margin: 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .choices-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 16px;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.6;
+    }
+    .choices-list li::before {
+      content: '→';
+      color: var(--red);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ===== CONCLUSIONS ===== */
+    .conclusions-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 8px;
+    }
+    .conclusion-item {
+      padding: 24px 28px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .conclusion-item strong {
+      display: block;
+      font-family: var(--ff-display);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .conclusion-item p {
+      font-size: 15px !important;
+      margin: 0 !important;
+      color: rgba(255,255,255,0.55) !important;
+    }
+
+    /* ===== PRINCIPLES TABLE ===== */
+    .principles-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-top: 8px;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .principle-row {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 0;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .principle-row + .principle-row {
+      border-top: none;
+    }
+    .principle-key {
+      padding: 24px 24px;
+      font-family: var(--ff-display);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--red);
+      border-right: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+    }
+    .principle-val {
+      padding: 24px 28px;
+      font-size: 15px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.65;
+      display: flex;
+      align-items: center;
+    }
+
+    /* ===== CTA ===== */
+    .koncept-cta {
+      text-align: center;
+      padding: 80px 0 60px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .koncept-cta h2 {
+      font-family: var(--ff-display);
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .koncept-cta p {
+      font-size: 17px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+      max-width: 520px;
+      margin: 0 auto 36px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 700px) {
+      .heroes-grid { grid-template-columns: 1fr; }
+      .principle-row { grid-template-columns: 1fr; }
+      .principle-key { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    }
+  </style>
+</head>
+<body>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="playArrow" viewBox="0 0 24 24">
+      <path d="M8 5v14l11-7z" fill="currentColor"/>
+    </symbol>
+    <symbol id="logoArrow" viewBox="0 0 20 28">
+      <path d="M0 0 L20 14 L0 28 Z" fill="currentColor"/>
+    </symbol>
+  </svg>
+
+  <!-- HEADER -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="Levin AI">
+        <img class="logo-img logo-img-dark" src="assets/logo-black.png" alt="le▸in" />
+        <img class="logo-img logo-img-light" src="assets/logo.png" alt="le▸in" />
+        <span class="logo-ai">AI</span>
+      </a>
+      <button class="theme-toggle" type="button" aria-label="Переключить тему">
+        <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>
+        </svg>
+        <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M12 7a5 5 0 1 0 5 5 5 5 0 0 0-5-5Zm0-5a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1Zm0 17a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1ZM4.22 5.64a1 1 0 1 1 1.42-1.42l1.41 1.42a1 1 0 1 1-1.41 1.41Zm12.73 12.73a1 1 0 1 1 1.41-1.41l1.42 1.41a1 1 0 1 1-1.42 1.42ZM2 12a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1Zm17 0a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2h-2a1 1 0 0 1-1-1ZM5.64 19.78a1 1 0 1 1-1.42-1.42l1.42-1.41a1 1 0 1 1 1.41 1.41Zm12.73-12.73a1 1 0 1 1-1.41-1.41l1.41-1.42a1 1 0 1 1 1.42 1.42Z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="section section-dark koncept-hero">
+    <div class="container">
+      <p class="koncept-eyebrow">Детский анимационный сериал</p>
+      <h1 class="koncept-title">Братья</h1>
+      <p class="koncept-subtitle">Концепция первой серии</p>
+      <p class="koncept-meta">2026</p>
+    </div>
+  </section>
+
+  <!-- ===== О СЕРИАЛЕ ===== -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="koncept-section">
+        <p class="koncept-section-label">О проекте</p>
+        <h2>О чём этот сериал</h2>
+        <p>«Братья» — детский анимационный сериал о двух ребятах, которые каждую серию встречают нового персонажа и вместе с ним проходят через важный жизненный урок. Братья — хорошие, живые, любознательные. С ними всё в порядке. Они не исправляются сами — их задача исследовать мир и помогать другим.</p>
+        <p>В основе каждой серии — трансформация. Не братьев, а персонажа, которого они встречают. Братья участвуют в его истории, наблюдают за переменами и вместе со зрителем делают вывод. Ребёнок не получает лекцию — он проживает открытие сам. Именно такие истории запоминаются.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ГЕРОИ ===== -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="koncept-section">
+        <p class="koncept-section-label">Персонажи</p>
+        <h2>Главные герои</h2>
+        <div class="heroes-grid">
+          <div class="hero-card">
+            <div class="hero-card-name">Братья</div>
+            <p>Добрые, активные, любознательные. Не идеальные — живые. Учатся через наблюдение и участие.</p>
+          </div>
+          <div class="hero-card">
+            <div class="hero-card-name">Папа</div>
+            <p>Мудрый, но не назидательный. Направляет через вопросы и метафоры — никогда не даёт готового ответа.</p>
+          </div>
+          <div class="hero-card">
+            <div class="hero-card-name">Мама</div>
+            <p>Источник тепла, уюта и ощущения дома. Делится советом живо, с любовью — не поучает.</p>
+          </div>
+          <div class="hero-card">
+            <div class="hero-card-name">Герой серии</div>
+            <p>Новый персонаж. Именно через его путь раскрывается тема выпуска. Он проходит трансформацию — братья рядом.</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 16px;">
+          <div class="hero-card">
+            <div class="hero-card-name">Герой-рассказчик</div>
+            <p>Закадровый рассказчик. Быстро погружает зрителя в ситуацию, обозначает место, время, настроение сцены. История становится плавной, сказочной и понятной. Удерживает темп серии без прямого морализаторства.</p>
+          </div>
+        </div>
+
+        <div class="koncept-quote">
+          <p>«Братья возвращались домой, когда заметили мальчика на лавочке. Он сидел один и, казалось, совсем не хотел ни с кем разговаривать.»</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== СЕРИЯ 1 ===== -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="koncept-section">
+        <div class="episode-tag"><span>Серия 1</span> «Ты есть то, что ты ешь»</div>
+        <p class="koncept-section-label">Тема</p>
+        <h2>Правильное питание как источник энергии, ясности, настроения и уверенности</h2>
+        <p><strong style="color: rgba(255,255,255,0.9)">Главная идея:</strong> еда — это топливо. Хорошее топливо позволяет тебе раскрыться на полную.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== СЮЖЕТ ===== -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="koncept-section">
+        <p class="koncept-section-label">Сюжет</p>
+        <h2>История</h2>
+        <p>Братья возвращаются домой и замечают мальчика на лавочке. Он грустный, вялый, ест фастфуд в одиночестве. Компания ребят смеётся над ним и быстро уходит. Братья хотят узнать, в чём дело, и садятся рядом.</p>
+        <p>Мальчик рассказывает: ребята во дворе постоянно называют его неуклюжим. Он часто устаёт, раздражается, грустит. Когда становится плохо — тянется к сладкому и фастфуду. На короткое время легче. Но потом снова нет сил — и всё по кругу.</p>
+        <p>Братья слушают, сочувствуют и провожают его до дома.</p>
+        <p>Вечером — ужин за столом. Братья рассказывают отцу. Он слушает внимательно и хвалит ребят — за то, что заметили человека в беде и не прошли мимо. А потом даёт подсказку:</p>
+
+        <div class="koncept-quote">
+          <p>«Ты есть то, что ты ешь. Подумайте, что это значит.»</p>
+        </div>
+
+        <p>Братья задумываются. После ужина фраза не переставала крутиться у них в голове — они начинают думать, искать информацию, разбираться. И постепенно приходит осознание: то, что ты ешь каждый день — это не просто вкус. Это твоя энергия. Твои мысли. Твоё настроение. Это ты.</p>
+        <p>На следующий день они идут к мальчику. Не с советами — с предложением: попробовать вместе. Начать делать другой выбор. Посмотреть, что изменится.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== НОВЫЕ ВЫБОРЫ ===== -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="koncept-section">
+        <p class="koncept-section-label">Трансформация</p>
+        <h2>Новые выборы</h2>
+        <ul class="choices-list">
+          <li>Газировка → вода или домашний напиток без лишнего сахара</li>
+          <li>Постоянный фастфуд → нормальный домашний обед</li>
+          <li>Сладкий перекус → фрукты, орехи, йогурт</li>
+          <li>Хаотичная еда → завтрак, обед, ужин</li>
+          <li>Заедать грусть → сначала понять своё чувство, потом выбрать еду, которая реально помогает телу</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ВИЗУАЛЬНАЯ ИДЕЯ ===== -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="koncept-section">
+        <p class="koncept-section-label">Визуал</p>
+        <h2>Визуальная идея</h2>
+        <p>После тяжёлой еды мир героя — серый, медленный, вязкий. После нормального питания краски становятся ярче, движения легче, мысли быстрее, настроение теплее. Ребёнок считывает это без слов — просто видит и чувствует.</p>
+        <p>У героя появляется энергия. Он легче встаёт утром, быстрее включается, начинает улыбаться. Его мир буквально становится другим — ярче, живее, быстрее. Вместе с самочувствием меняется всё вокруг: появляются цели, желание действовать, интерес к людям. Он не превращается в другого человека — он раскрывается таким, каким был внутри.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ФИНАЛ ===== -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="koncept-section">
+        <p class="koncept-section-label">Финал</p>
+        <h2>Развязка</h2>
+        <p>Мы видим, как изменился мир нашего героя. Братья рядом — и они искренне рады. Не потому что «сделали доброе дело», а потому что видят живого, заряженного человека там, где раньше был усталый и закрытый мальчик.</p>
+        <p>Герой выходит во двор. Те самые ребята, которые раньше смеялись, сами зовут его играть. Он теперь другой — активный, открытый, уверенный. Вот так всё изменила еда.</p>
+
+        <div class="conclusions-list" style="margin-top: 32px;">
+          <div class="conclusion-item">
+            <strong>Правильная еда даёт правильную энергию</strong>
+            <p>Не просто силы — именно тот заряд, который нужен телу, чтобы работать по-настоящему.</p>
+          </div>
+          <div class="conclusion-item">
+            <strong>Хорошая еда — это хорошие мысли и идеи</strong>
+            <p>Когда тело получает то, что нужно, голова думает яснее. Это не метафора — это физиология.</p>
+          </div>
+          <div class="conclusion-item">
+            <strong>Питание влияет на состояние и настроение</strong>
+            <p>Не только внешние обстоятельства и другие люди — а ещё и то, что ты кладёшь в тарелку каждый день.</p>
+          </div>
+          <div class="conclusion-item">
+            <strong>Состояние влияет на весь мир вокруг</strong>
+            <p>На друзей. На цели. На игры. На то, каким ты будешь через год. Маленький выбор в питании — это большой выбор в жизни.</p>
+          </div>
+        </div>
+
+        <div class="koncept-quote" style="margin-top: 32px;">
+          <p>«Еда — это не просто еда. Это топливо для ваших идей, настроения и силы.»</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== КЛЮЧЕВЫЕ ПРИНЦИПЫ ===== -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="koncept-section">
+        <p class="koncept-section-label">Подход</p>
+        <h2>Ключевые принципы</h2>
+        <div class="principles-grid">
+          <div class="principle-row">
+            <div class="principle-key">Без морализаторства</div>
+            <div class="principle-val">Дети проживают открытие вместе с героем. Никто не говорит им «надо делать вот так».</div>
+          </div>
+          <div class="principle-row">
+            <div class="principle-key">Еда — это выбор, а не ограничение</div>
+            <div class="principle-val">Правильное питание подаётся как инструмент силы, а не список запретов.</div>
+          </div>
+          <div class="principle-row">
+            <div class="principle-key">Трансформация — это суть</div>
+            <div class="principle-val">Мы любим фильмы и мультики именно потому, что герой меняется. Именно поэтому такие истории работают глубже всего.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="koncept-cta">
+        <h2>Если концепция вам близка —<br/><span class="title-accent">работаем дальше</span></h2>
+        <p>На следующем этапе прописываем диалоги, детально разрабатываем каждую сцену и создаём полноценные образы героев с характерами и историями.</p>
+        <a href="mailto:resp.udm@gmail.com" class="btn btn-primary btn-xl">
+          <span>Написать Алексею</span>
+          <svg class="btn-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#playArrow"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo footer-logo">
+          <img class="logo-img logo-img-dark" src="assets/logo-black.png" alt="le▸in" />
+          <img class="logo-img logo-img-light" src="assets/logo.png" alt="le▸in" />
+        </a>
+        <p>Levin Video Production<br/>© 2026. Все права защищены.</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-label">«Братья» · Концепция · 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
