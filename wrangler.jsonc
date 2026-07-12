@@ -1,0 +1,8 @@
+{
+  // Статичный лендинг: Worker без кода, только раздача файлов из корня репозитория.
+  "name": "landing-curs",
+  "compatibility_date": "2026-07-12",
+  "assets": {
+    "directory": "."
+  }
+}
